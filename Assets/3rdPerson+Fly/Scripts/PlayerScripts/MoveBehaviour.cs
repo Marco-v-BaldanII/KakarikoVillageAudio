@@ -18,6 +18,8 @@ public class MoveBehaviour : GenericBehaviour
 	private bool jump;                              // Boolean to determine whether or not the player started a jump.
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
 
+	public Animator LinkAnim;
+
 	// Start is always called after any Awake functions.
 	void Start()
 	{
@@ -60,6 +62,7 @@ public class MoveBehaviour : GenericBehaviour
 		{
 			// Set jump related parameters.
 			behaviourManager.LockTempBehaviour(this.behaviourCode);
+			LinkAnim.SetBool("Jump", true);
 			behaviourManager.GetAnim.SetBool(jumpBool, true);
 			// Is a locomotion jump?
 			if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
@@ -86,13 +89,15 @@ public class MoveBehaviour : GenericBehaviour
 			// Has landed?
 			if ((behaviourManager.GetRigidBody.velocity.y < 0) && behaviourManager.IsGrounded())
 			{
+				LinkAnim.SetBool("Grounded", true);
 				behaviourManager.GetAnim.SetBool(groundedBool, true);
 				// Change back player friction to default.
 				GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
 				GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
 				// Set jump related parameters.
 				jump = false;
-				behaviourManager.GetAnim.SetBool(jumpBool, false);
+                LinkAnim.SetBool("Jump", false);
+                behaviourManager.GetAnim.SetBool(jumpBool, false);
 				behaviourManager.UnlockTempBehaviour(this.behaviourCode);
 			}
 		}
@@ -126,7 +131,8 @@ public class MoveBehaviour : GenericBehaviour
 			speed = sprintSpeed;
 		}
 
-		behaviourManager.GetAnim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
+		LinkAnim.SetFloat("speed", speed, speedDampTime, Time.deltaTime);
+        behaviourManager.GetAnim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
 	}
 
 	// Remove vertical rigidbody velocity.

@@ -16,7 +16,9 @@ public class BasicBehaviour : MonoBehaviour
 	private int defaultBehaviour;                         // The default behaviour of the player when any other is not active.
 	private int behaviourLocked;                          // Reference to temporary locked behaviour that forbids override.
 	private Vector3 lastDirection;                        // Last direction the player was moving.
-	private Animator anim;                                // Reference to the Animator component.
+	public Animator anim;
+	public Animator LinkAnim;
+	// Reference to the Animator component.
 	private ThirdPersonOrbitCamBasic camScript;           // Reference to the third person camera script.
 	private bool sprint;                                  // Boolean to determine whether or not the player activated the sprint mode.
 	private bool changedFOV;                              // Boolean to store when the sprint action has changed de camera FOV.
@@ -49,7 +51,7 @@ public class BasicBehaviour : MonoBehaviour
 		// Set up the references.
 		behaviours = new List<GenericBehaviour> ();
 		overridingBehaviours = new List<GenericBehaviour>();
-		anim = GetComponent<Animator> ();
+		//anim = GetComponent<Animator> ();
 		hFloat = Animator.StringToHash("H");
 		vFloat = Animator.StringToHash("V");
 		camScript = playerCamera.GetComponent<ThirdPersonOrbitCamBasic> ();
