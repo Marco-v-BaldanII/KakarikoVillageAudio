@@ -24,7 +24,7 @@ public class FootsetpCollection
 
         public float VolumeVariation()
         {
-            return UnityEngine.Random.Range(-volume_variation, volume_variation);
+            return 1f + UnityEngine.Random.Range(-volume_variation, 0);
         }
 
     }
@@ -363,6 +363,7 @@ public class MoveBehaviour : GenericBehaviour
         FootsetpCollection.Audio audio = footsteps.GetFootstep();
         source.pitch = footsteps.PitchVariation();
         source.volume = audio.VolumeVariation();
+        //source.volume = 1;
         source.PlayOneShot(audio.clip);
         print("footstep");
     }
