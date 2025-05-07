@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.83.16 commit date:2021-06-15, commit time:08:46, hash:051567553d29</authoring_tool>
+    </contributor>
+    <created>2021-08-27T10:01:59</created>
+    <modified>2021-08-27T10:01:59</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="nw_hane_model_mat-effect">
+      <profile_COMMON>
+        <newparam sid="niw_hane_txt-surface">
+          <surface type="2D">
+            <init_from>niw_hane_txt</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="niw_hane_txt-sampler">
+          <sampler2D>
+            <source>niw_hane_txt-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="niw_hane_txt-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="niw_hane_txt" name="niw_hane_txt">
+      <init_from>niw_hane_txt.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="nw_hane_model_mat-material" name="nw_hane_model_mat">
+      <instance_effect url="#nw_hane_model_mat-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="VisID_0-mesh" name="VisID:0">
+      <mesh>
+        <source id="VisID_0-mesh-positions">
+          <float_array id="VisID_0-mesh-positions-array" count="9">400 -246 0 -400 -246 0 0 409 0</float_array>
+          <technique_common>
+            <accessor source="#VisID_0-mesh-positions-array" count="3" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="VisID_0-mesh-normals">
+          <float_array id="VisID_0-mesh-normals-array" count="9">3.37789e-5 -3.37797e-5 1 0.8534294 -0.5212085 0 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#VisID_0-mesh-normals-array" count="3" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="VisID_0-mesh-map-0">
+          <float_array id="VisID_0-mesh-map-0-array" count="6">1.66016 0.8597446 -0.05355352 -0.4628809 -0.2544933 1.569063</float_array>
+          <technique_common>
+            <accessor source="#VisID_0-mesh-map-0-array" count="3" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="VisID_0-mesh-vertices">
+          <input semantic="POSITION" source="#VisID_0-mesh-positions"/>
+        </vertices>
+        <triangles material="nw_hane_model_mat-material" count="1">
+          <input semantic="VERTEX" source="#VisID_0-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#VisID_0-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#VisID_0-mesh-map-0" offset="2" set="0"/>
+          <p>0 0 0 1 1 1 2 2 2</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="nw_hane_model_VisID_0-skin" name="nw_hane_model">
+      <skin source="#VisID_0-mesh">
+        <bind_shape_matrix>0.9999998 0 0 0 0 0.9999998 -2.84217e-14 0 0 2.84217e-14 0.9999998 0 0 0 0 1</bind_shape_matrix>
+        <source id="nw_hane_model_VisID_0-skin-joints">
+          <Name_array id="nw_hane_model_VisID_0-skin-joints-array" count="1">bone_0</Name_array>
+          <technique_common>
+            <accessor source="#nw_hane_model_VisID_0-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="nw_hane_model_VisID_0-skin-bind_poses">
+          <float_array id="nw_hane_model_VisID_0-skin-bind_poses-array" count="16">1000.013 0 0 0 0 -1.62923e-4 1000.013 0 0 -1000.013 -1.62923e-4 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#nw_hane_model_VisID_0-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="nw_hane_model_VisID_0-skin-weights">
+          <float_array id="nw_hane_model_VisID_0-skin-weights-array" count="3">1 1 1</float_array>
+          <technique_common>
+            <accessor source="#nw_hane_model_VisID_0-skin-weights-array" count="3" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#nw_hane_model_VisID_0-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#nw_hane_model_VisID_0-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="3">
+          <input semantic="JOINT" source="#nw_hane_model_VisID_0-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#nw_hane_model_VisID_0-skin-weights" offset="1"/>
+          <vcount>1 1 1 </vcount>
+          <v>0 0 0 1 0 2</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="nw_hane_model" name="nw_hane_model" type="NODE">
+        <matrix sid="transform">9.99987e-4 0 0 0 0 -1.62919e-10 -9.99987e-4 0 0 9.99987e-4 -1.62919e-10 0 0 0 0 1</matrix>
+        <node id="nw_hane_model_bone_0" name="bone_0" sid="bone_0" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <node id="nw_hane_model_bone_0_end" name="bone_0_end" sid="bone_0_end" type="JOINT">
+            <matrix sid="transform">1 0 0 0 0 1 0 0.001 0 0 1 0 0 0 0 1</matrix>
+            <extra>
+              <technique profile="blender">
+                <layer sid="layer" type="string">0</layer>
+                <tip_x sid="tip_x" type="float">0</tip_x>
+                <tip_y sid="tip_y" type="float">0.00999999</tip_y>
+                <tip_z sid="tip_z" type="float">0</tip_z>
+              </technique>
+            </extra>
+          </node>
+          <extra>
+            <technique profile="blender">
+              <layer sid="layer" type="string">0</layer>
+              <tip_x sid="tip_x" type="float">0</tip_x>
+              <tip_y sid="tip_y" type="float">0.00999999</tip_y>
+              <tip_z sid="tip_z" type="float">0</tip_z>
+            </technique>
+          </extra>
+        </node>
+        <node id="VisID_0" name="VisID:0" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#nw_hane_model_VisID_0-skin">
+            <skeleton>#nw_hane_model_bone_0</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="nw_hane_model_mat-material" target="#nw_hane_model_mat-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
