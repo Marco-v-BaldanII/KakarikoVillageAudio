@@ -47,6 +47,7 @@ public class FootsetpCollection
 
 
 
+
     public static Surfaces surface;
     [Range(0, 1)] public float volume;
 
@@ -110,6 +111,7 @@ public class MoveBehaviour : GenericBehaviour
     // Boolean to determine if the player has collided with an obstacle.
 
     [SerializeField] FootsetpCollection footsteps;
+    [SerializeField] AudioClip[] JumpScreams;
     [SerializeField] AnimationCurve curve;
     private AudioSource source;
 
@@ -166,6 +168,12 @@ public class MoveBehaviour : GenericBehaviour
             behaviourManager.LockTempBehaviour(this.behaviourCode);
             behaviourManager.GetAnim.SetBool(jumpBool, true);
             LinkAnim.SetBool("Jump", true);
+
+            // Jump audi
+            source.volume = 1;
+            source.PlayOneShot(JumpScreams[UnityEngine.Random.Range(0,JumpScreams.Length)]);
+
+
             // Is a locomotion jump?
             if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
             {
