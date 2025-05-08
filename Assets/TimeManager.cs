@@ -13,10 +13,18 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private AudioClip night;
     [SerializeField] private AudioClip chicken;
     [SerializeField] private AudioClip wolf;
+    [SerializeField] private GameObject Lights;
     void Start()
     {
         StartCoroutine(CallFunctionEveryFiveSeconds());
+    }
 
+
+    void RotateLights()
+    {
+        float rotationSpeed = 360 / 120f; 
+        float rotationAmount = rotationSpeed * Time.deltaTime;
+        Lights.transform.Rotate(rotationAmount, 0, 0);
     }
 
     IEnumerator CallFunctionEveryFiveSeconds()
@@ -61,6 +69,6 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RotateLights();
     }
 }
