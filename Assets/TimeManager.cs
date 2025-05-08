@@ -14,6 +14,12 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private AudioClip chicken;
     [SerializeField] private AudioClip wolf;
     [SerializeField] private GameObject Lights;
+    [SerializeField] private Material sky;
+    [SerializeField] private Material days;
+    [SerializeField] private Material nights;
+
+
+
     void Start()
     {
         StartCoroutine(CallFunctionEveryFiveSeconds());
@@ -63,6 +69,7 @@ public class TimeManager : MonoBehaviour
             Debug.Log("Playing: " + transitionVariant.name);
         }
 
+        //sky.Lerp(days, nights, 5f);
 
     }
 
