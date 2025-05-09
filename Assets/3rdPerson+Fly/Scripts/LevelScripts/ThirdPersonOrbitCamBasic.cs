@@ -57,6 +57,7 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 	void Update()
 	{
 		if (Time.timeScale < 0.1f) { return; }
+	//	if (Input.GetMouseButton(0) == false) { return; }
 
 		// Get mouse movement to orbit the camera.
 		// Mouse:

@@ -5,7 +5,12 @@ using UnityEngine;
 public enum State
 {
     PLAYING,
-    PAUSED
+    PAUSED,
+
+    // Navi
+    NAVI_FOLLOW,
+    NAVI_TARGET
+
 }
 
 public class IState
