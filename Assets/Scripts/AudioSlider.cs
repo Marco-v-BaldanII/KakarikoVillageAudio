@@ -17,6 +17,8 @@ public class AudioSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mixer.SetFloat(parameter, slider.value);
+        float decibels = 20 * Mathf.Log10(slider.value);
+        if (slider.value == 0) { decibels = -80; }
+        mixer.SetFloat( parameter, decibels );
     }
 }
