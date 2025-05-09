@@ -27,7 +27,7 @@ public class AudioObject
 
 
 
-    public static Surfaces surface;
+    public static Surface  surface;
     [Range(0, 1)] public float volume;
 
     public Audio GetRandomAudio()

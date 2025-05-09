@@ -1,0 +1,47 @@
+SC_lupy_inside
+==============
+  Textures:
+    - V_lupy_spc
+        Scale: 0.5, 0.5
+    - toonMETAL02
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 75, 75, 75, 220
+
+  Color Registers:
+    - 128, 128, 128, 255
+    - 40, 220, 40, 255
+    - 0, 80, 0, 255
+
+  Steps:
+    1: RGB = (lerp from (0, 80, 0) to (40, 220, 40) using (tex #2 RGB))
+         A = 0
+    2: RGB = ((75, 75, 75) * (tex #1 RGB)), then add (prev. RGB)
+         A = 0, then add 220
+
+
+
+SC_lupy_outside
+===============
+  Textures:
+    - V_lupy_spc
+        Offset: 1.5, 1.5
+        Scale: 1.5, 1
+        Rotation: 0.27777947325052643
+
+  Ambient Colors:
+    - 50, 50, 50, 50
+
+  Constant Colors:
+    - 255, 255, 255, 220
+
+  Color Registers:
+    - 128, 128, 128, 255
+    - 140, 255, 120, 255
+
+  Steps:
+    1: RGB = if R of (tex #1 RGB) > (128, 128, 128), use (0, 0, 0), otherwise (0, 0, 0), then add (140, 255, 120)
+         A = if R of (tex #1 A) > 255, use 220, otherwise 0
