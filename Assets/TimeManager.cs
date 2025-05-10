@@ -22,7 +22,10 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
+        song.Stop();
         StartCoroutine(CallFunctionEveryFiveSeconds());
+        song.clip = night;
+        song.Play();
     }
 
 
@@ -59,18 +62,39 @@ public class TimeManager : MonoBehaviour
         Debug.Log("Time: " + timeIn12HourFormat + " " + amPm);
         if (timeIn12HourFormat == 6)
         {
-            //AudioClip songVariant = am ? day : night;
-            //song.clip = songVariant;
+            StartCoroutine(FadeOutSong(am));
             AudioClip transitionVariant = am ? chicken : wolf;
             transition.clip = transitionVariant;
             transition.Play();
             string audioLog = am ? "quiquiriqui" : "auuuuuuu";
             Debug.Log(audioLog);
             Debug.Log("Playing: " + transitionVariant.name);
+            //lerp the volume of Song down to 0 through 5 seconds
+            
         }
+
 
         //sky.Lerp(days, nights, 5f);
 
+    }
+
+
+    IEnumerator FadeOutSong(bool am)
+    {
+        float initialVolume = song.volume;
+        float totalTime = 3;
+        float currentTime = 0;
+        while (song.volume > 0.1f)
+        {
+            currentTime += Time.deltaTime;
+            song.volume = Mathf.Lerp(1, 0, currentTime / totalTime);
+            yield return null;
+        }
+        song.Stop();
+        AudioClip songVariant = am ? day : night;
+        song.clip = songVariant;
+        song.Play();
+        song.volume = 1;
     }
 
     // Update is called once per frame
