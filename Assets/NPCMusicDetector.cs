@@ -18,6 +18,8 @@ public class NPCMusicDetector : MonoBehaviour
     public AudioMixerSnapshot windmillSnapshot;
     public AudioMixerSnapshot skultulaSnapshot;
     public AudioMixerSnapshot wellSnapshot;
+
+    public AudioMixerSnapshot regularSnaphot;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("npc_snapshot"))
@@ -48,15 +50,15 @@ public class NPCMusicDetector : MonoBehaviour
     {
         if (other.CompareTag("npc_snapshot"))
         {
-            areaSnapshot.TransitionTo(1.2f);
+            regularSnaphot.TransitionTo(1.2f);
         }
         if (other.CompareTag("windmill_snapshot"))
         {
-            areaSnapshot.TransitionTo(1.2f);
+            regularSnaphot.TransitionTo(1.2f);
         }
         if (other.CompareTag("skultula_snapshot"))
         {
-            areaSnapshot.TransitionTo(1.2f);
+            regularSnaphot.TransitionTo(1.2f);
         }
 
     }
