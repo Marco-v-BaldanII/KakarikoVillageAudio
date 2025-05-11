@@ -116,6 +116,8 @@ public class MoveBehaviour : GenericBehaviour
     private AudioSource source;
 
     public Animator LinkAnim;
+
+    public Surfaces surface;
     protected void Awake()
     {
         source = GetComponent<AudioSource>();
@@ -140,6 +142,7 @@ public class MoveBehaviour : GenericBehaviour
     // Update is used to set features regardless the active behaviour.
     void Update()
     {
+        surface = FootsetpCollection.surface;
         // Get jump input.
         if (!jump && Input.GetButtonDown(jumpButton) && behaviourManager.IsCurrentBehaviour(this.behaviourCode) && !behaviourManager.IsOverriding())
         {

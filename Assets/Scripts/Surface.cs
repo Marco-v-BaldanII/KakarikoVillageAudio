@@ -15,6 +15,15 @@ public class Surface : MonoBehaviour
         FootsetpCollection.surface = surface; // static field
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            FootsetpCollection.surface = surface;
+        }
+        if (collision.gameObject.CompareTag("Player") == false && on_trigger) { return; }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Player") == false && on_trigger == false) { return; }
